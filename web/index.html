@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vite App</title>
+</head>
+
+<body>
+  <!-- <gmp-map center="40.4142989,-124.2301242" zoom="6" map-id="DEMO_MAP_ID" style="height: 800px">
+    <gmp-advanced-marker position="37.4220656,-122.0840897" title="Mountain View, CA"></gmp-advanced-marker>
+    <gmp-advanced-marker position="47.648994,-122.3503845" title="Seattle, WA"></gmp-advanced-marker>
+    <gmp-advanced-marker position="39.7392,-104.9903" title="Denver, CO"></gmp-advanced-marker>
+  </gmp-map> -->
+
+  <div id="app"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=KEY_HERE&libraries=maps,marker" defer></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

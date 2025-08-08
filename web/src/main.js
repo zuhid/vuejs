@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueGoogleMaps from '@fawmi/vue-google-maps'
 
 function registerGlobalComponents(app) {
   const components = import.meta.glob('./controls/*.vue', { eager: true })
@@ -11,5 +12,12 @@ function registerGlobalComponents(app) {
 
 const app = createApp(App)
 registerGlobalComponents(app)
+
+// app.use(VueGoogleMaps, {
+//   load: {
+//     key: 'KEY_HERE',
+//   },
+// })
+
 app.mount('#app')
 

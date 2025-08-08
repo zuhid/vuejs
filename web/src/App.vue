@@ -1,9 +1,10 @@
 <script setup>
 import Login from './views/Login.vue';
+import Map from './views/Map.vue';
 </script>
 
 <template>
-  <Login />
+  <Map />
 </template>
 
 <style>
