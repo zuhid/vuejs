@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import VueGoogleMaps from '@fawmi/vue-google-maps'
+import Login from './views/Login.vue'
+import Map from './views/Map.vue'
 
 function registerGlobalComponents(app) {
   const components = import.meta.glob('./controls/*.vue', { eager: true })
@@ -10,8 +12,18 @@ function registerGlobalComponents(app) {
   })
 }
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/', component: Login },
+    { path: '/login', component: Login },
+    { path: '/map', component: Map },
+  ]
+});
+
 const app = createApp(App)
 registerGlobalComponents(app)
+app.use(router)
 
 // app.use(VueGoogleMaps, {
 //   load: {

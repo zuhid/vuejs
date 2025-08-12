@@ -1,16 +1,22 @@
 <script setup>
-import Card from '@/controls/Card.vue';
-import TextInput from '@/controls/TextInput.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'
 
-const username = ref('');
-const password = ref('');
+const router = useRouter()
+const model = ref({
+  username: 'user',
+  password: 'pass'
+});
+
+const onSubmit = () => {
+  router.push('/map')
+};
 </script>
 
 <template>
-  <Card title="Login">
-    <TextInput label="Username" v-model="username.value" placeholder="Enter username" />
-    <TextInput label="Password" v-model="password.value" type="password" placeholder="Enter password" />
+  <Card title="Login" @onSubmit="onSubmit" submitText="Login">
+    <Text label="User Name" v-model="model.username" />
+    <Password label="Password" v-model="model.password" />
   </Card>
 </template>
 
