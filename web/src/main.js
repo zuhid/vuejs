@@ -16,6 +16,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: Login },
+    { path: '/learn', component: () => import('./views/Learn.vue') },
     { path: '/login', component: Login },
     { path: '/map', component: Map },
   ]
@@ -24,6 +25,9 @@ const router = createRouter({
 const app = createApp(App)
 registerGlobalComponents(app)
 app.use(router)
+app.config.errorHandler = (err, vm, info) => {
+  console.error('Error:', err, 'Info:', info)
+}
 
 // app.use(VueGoogleMaps, {
 //   load: {

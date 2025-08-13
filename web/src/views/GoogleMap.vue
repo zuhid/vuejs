@@ -47,16 +47,58 @@ function initMap() {
 
   const bounds = new google.maps.LatLngBounds();
   markers.forEach(marker => bounds.extend(marker.getPosition()));
-
   var extraPadding = (bounds.Mh.lo - bounds.Mh.hi);
-  // extraPadding = addLatitude(bounds.Mh.lo, extraPadding);
-  console.clear()
-  console.log('Bounds:', bounds.Mh.lo);
-  console.log('addLatitude:', extraPadding);
-  bounds.extend(new google.maps.LatLng(bounds.ni.hi, bounds.Mh.lo
-    + extraPadding
-  ));
-  console.log('Bounds:', bounds.Mh.lo);
+  bounds.extend(new google.maps.LatLng(bounds.ni.hi, bounds.Mh.lo + extraPadding));
+
+  // place line 
+  const seattle = { lat: 47.6062, lng: -122.3321 };
+  const denver = { lat: 39.7392, lng: -104.9903 };
+  const symbol1 = {
+    icon: {
+      path: "M -2,0 0,-2 2,0 0,2 z",
+      strokeColor: "#F00",
+      fillColor: "#F00",
+      fillOpacity: 1,
+    },
+    offset: "0%",
+  };
+  const symbol2 = {
+    icon: {
+      path: "M2 32L62 2L42 32L62 62L2 32Z",
+      fillOpacity: 1.0,
+      fillColor: "blue",
+      scale: 0.3,
+      rotation: 90,
+      anchor: new google.maps.Point(0, 33)
+    },
+    offset: "50%",
+  };
+  const symbol3 = {
+    icon: {
+      path: "M -2,-2 2,2 M 2,-2 -2,2",
+      strokeColor: "#292",
+      strokeWeight: 4,
+    },
+    offset: "100%",
+  };
+  const lineSymbol = {
+    icon: {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      strokeColor: "blue",
+      strokeWeight: 4,
+    },
+    offset: "100%",
+
+  };
+  const line = new google.maps.Polyline({
+    map: map,
+    geodesic: true,
+    strokeColor: "#0000FF",
+    strokeOpacity: 1,
+    strokeWeight: 2,
+    path: [seattle, denver],
+    icons: [symbol1, symbol2, lineSymbol],
+  });
   map.fitBounds(bounds);
 }
 
