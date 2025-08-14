@@ -1,3 +1,14 @@
+<script setup>
+
+import { defineProps, defineEmits, useAttrs } from 'vue';
+
+const props = defineProps({
+  title: { type: String, default: '' },
+  saveText: { type: String, default: 'Save' },
+  cancelText: { type: String, default: 'Cancel' }
+})
+</script>
+
 <template>
   <div class="card">
     <div v-if="title" class="card-title">{{ title }}</div>
@@ -6,23 +17,13 @@
     </div>
     <div class="card-actions">
       <slot name="actions">
-        <button v-if="submitText" class="card-btn" @click="$emit('onSubmit')">{{ submitText }}</button>
-        <button v-if="cancelText" class=" card-btn" @click="$emit('onCancel')">Cancel</button>
+        <button v-if="saveText.length > 0" class="card-btn" @click="$emit('onSubmit')">{{ saveText }}</button>
+        <button v-if="cancelText.length > 0" class=" card-btn" @click="$emit('onCancel')">{{ cancelText }}</button>
       </slot>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: { type: String, default: '' },
-    submitText: { type: String },
-    cancelText: { type: String }
-  },
-  emits: ['onSubmit', 'onCancel'],
-};
-</script>
 
 <style scoped>
 .card {
